@@ -2,13 +2,19 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { RegistrationNewComponent } from './components/registration-new/registration-new.component';
+import {FormsModule} from "@angular/forms";
+import { CarYearDirective } from './directives/car-year.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegistrationNewComponent,
+    CarYearDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
