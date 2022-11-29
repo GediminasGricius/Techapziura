@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {RegistrationService} from "../../services/registration.service";
 import {Registration} from "../../models/registration";
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-registration-list',
@@ -10,6 +12,8 @@ import {Registration} from "../../models/registration";
 export class RegistrationListComponent implements OnInit {
 
   public registrations:Registration[]=[];
+  public isLoggedin=false;
+  public user:User|null=null;
 
   private loadData(){
     this.registrationService.getRegistrations().subscribe((result)=>{
@@ -17,8 +21,14 @@ export class RegistrationListComponent implements OnInit {
     });
   }
 
-  constructor(private registrationService:RegistrationService) {
+  constructor(
+    private registrationService:RegistrationService,
+    private authService:AuthService
+    
+    ) {
     this.loadData();
+    this.isLoggedin=authService.isLoggedIn();
+    this.user=authService.user;
   }
 
   ngOnInit(): void {

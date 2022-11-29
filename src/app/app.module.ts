@@ -10,6 +10,7 @@ import { RegistrationListComponent } from './components/registration-list/regist
 import {RouterModule, Routes} from "@angular/router";
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RegistrationEditComponent } from './components/registration-edit/registration-edit.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 const routes:Routes=[
   {
@@ -23,6 +24,10 @@ const routes:Routes=[
   {
     path:'edit/:id',
     component:RegistrationEditComponent
+  },
+  {
+    path:'auth',
+    component:AuthComponent
   }
 ];
 
@@ -33,7 +38,8 @@ const routes:Routes=[
     CarYearDirective,
     RegistrationListComponent,
     NavigationComponent,
-    RegistrationEditComponent
+    RegistrationEditComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

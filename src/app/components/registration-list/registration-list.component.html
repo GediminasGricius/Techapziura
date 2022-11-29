@@ -2,6 +2,14 @@
   <div class="card">
     <div class="card-header">Registracijų sąrašas</div>
     <div class="card-body">
+
+      <div *ngIf="!isLoggedin">
+        Jūs nesate prisijungęs
+      </div>
+      <div *ngIf="isLoggedin && user!=null">
+        Jūs esate prisijungęs su vartotoju: {{ user.email }}
+      </div>
+      <hr>
       <table class="table">
         <thead>
         <tr>
