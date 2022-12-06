@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {RegistrationService} from "../../services/registration.service";
 import {Router} from "@angular/router";
+import {AuthUser} from "../../models/authUser";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-registration-new',
@@ -10,7 +12,12 @@ import {Router} from "@angular/router";
 })
 export class RegistrationNewComponent implements OnInit {
 
-  constructor(private registrationService:RegistrationService, private router:Router) { }
+  constructor(
+    private registrationService:RegistrationService,
+    private router:Router) {
+
+
+  }
 
   ngOnInit(): void {
   }

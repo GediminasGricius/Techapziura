@@ -38,13 +38,13 @@ export class AuthService {
   public register(authUser:AuthUser){
     return this.http.post<User>(this.url+":signUp?key="+this.key,authUser).pipe(
       tap(this.afterLogin)
-    );   
+    );
   }
 
   public login(authUser:AuthUser){
     return this.http.post<User>(this.url+":signInWithPassword?key="+this.key,authUser).pipe(
       tap(this.afterLogin)
-    );   
+    );
   }
 
   public isLoggedIn(){
@@ -54,6 +54,7 @@ export class AuthService {
   public logout(){
     this.user=null;
     this.router.navigate(["/auth"]);
+    localStorage.removeItem("user");
     this.userUpdated.emit();
 
   }
