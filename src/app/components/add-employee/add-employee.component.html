@@ -1,0 +1,56 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header">Naujas darbuotojas</div>
+    <div style="height: 200px;" >
+      <div class="block" [@blockTriger]="blokelioBusena" (click)="blokelisClick()"></div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" >
+        <div class="mb-3">
+          <label class="form-label">Darbuotojo vardas:</label>
+          <input type="text" class="form-control" formControlName="firstName" [@inputTrigger]="nameInput" (focus)="nameInput='focus'" (blur)="nameInput='blur'"  >
+          <span *ngIf="!employeeForm.get('firstName')?.valid && employeeForm.get('firstName')?.touched">Darbuotojo vardas yra privalomas, taip pat ne trumpesnis nei 3 simboliai</span>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Darbuotojo pavardė:</label>
+          <input type="text" class="form-control" formControlName="lastName" [@inputTrigger]="surnameInput" (focus)="surnameInput='focus'" (blur)="surnameInput='blur'">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">El. paštas:</label>
+          <input type="text" class="form-control" formControlName="email" [@inputTrigger]="emailInput" (focus)="emailInput='focus'" (blur)="emailInput='blur'">
+        </div>
+        <hr>
+        <div class="mb-3" formArrayName="phones">
+          <h4>Telefono numeriai</h4>
+          <div class="mb-3" *ngFor="let phoneControl of phones(); let i=index" [@addAddressTriger]>
+            <input  type="text" class="form-control" [formControlName]="i" >
+          </div>
+          <div>
+            <button (click)="addPhoneNumber()" type="button" class="btn btn-info">Pridėti papildomą numerį</button>
+          </div>
+        </div>
+        <hr>
+        <div class="mb-3" formArrayName="addresses">
+          <h4>Adresai</h4>
+          <div *ngFor="let address of  addresses(); let i=index" [formGroup]="abstractToFormGroup(address)" [@addAddressTriger] >
+            <div class="mb-3">
+                <label class="form-label">Miestas:</label>
+                <input type="text" class="form-control" formControlName="city" >
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Adresas:</label>
+              <input type="text" class="form-control" formControlName="address" >
+            </div>
+          </div>
+          <div>
+            <button (click)="addAddress()" type="button" class="btn btn-info">Pridėti papildomą adresą</button>
+          </div>
+
+        </div>
+        <hr>
+
+        <button [disabled]="!employeeForm.valid"  type="submit" class="btn btn-success">Pridėti darbuotoją</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -8,9 +8,10 @@
       <div class="navbar-nav">
         <a class="nav-link " routerLink="/">Registracijų sąrašas</a>
         <a class="nav-link " routerLink="/new">Pridėti naują registraciją</a>
+        <a class="nav-link" routerLink="/addEmployee">Pridėti personalą</a>
 
       </div>
-      
+
     </div>
     <a *ngIf="!isLoggedin" class="btn btn-success float-end" routerLink="/auth">Prisijungti</a>
     <button *ngIf="isLoggedin" class="btn btn-info float-end" (click)="logout()">Atsijungti</button>

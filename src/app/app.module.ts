@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { RegistrationNewComponent } from './components/registration-new/registration-new.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CarYearDirective } from './directives/car-year.directive';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { RegistrationListComponent } from './components/registration-list/registration-list.component';
@@ -13,6 +13,8 @@ import { RegistrationEditComponent } from './components/registration-edit/regist
 import { AuthComponent } from './components/auth/auth.component';
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {AuthGuard} from "./guards/auth.guard";
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 const routes:Routes=[
   {
@@ -32,6 +34,10 @@ const routes:Routes=[
   {
     path:'auth',
     component:AuthComponent
+  },
+  {
+    path:'addEmployee',
+    component:AddEmployeeComponent
   }
 ];
 
@@ -43,13 +49,16 @@ const routes:Routes=[
     RegistrationListComponent,
     NavigationComponent,
     RegistrationEditComponent,
-    AuthComponent
+    AuthComponent,
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    BrowserAnimationsModule
   ],
   providers: [
     {
